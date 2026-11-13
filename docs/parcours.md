@@ -57,3 +57,4 @@ Pratique : dossier d'architecture construit sur les labos (HLD, ADR, matrice de 
 | M2 | L1, L2, L3 + quiz + `labs/labo3_extraction` | rédigé |
 | M3 | L1, L2, L3 + quiz + `labs/m3` | rédigé |
 | M4 | L1, L2, L3 + quiz + `labs/m4` | rédigé |
+| M5 | L1, L2, L3 + quiz + `labs/labo2_claude_code` | rédigé |

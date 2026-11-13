@@ -1,0 +1,4 @@
+"""Barème fictif."""
+PRIME_BASE = 400.0
+MAJORATION_JEUNE_CONDUCTEUR = 0.5   # +50 % avant 25 ans
+PLAFOND_COEFF = 3.5
