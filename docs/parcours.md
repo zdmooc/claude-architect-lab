@@ -37,16 +37,11 @@
 | M8 | Les 6 scénarios, exclusions, pièges ; questions originales justifiées |
 | M9 | Exercice de synthèse, bilan, transition vers Professional |
 
-## D. Professional (orientation provisoire)
+## D. Parcours Professional — domaine d'architecture d'entreprise
 
-Basée uniquement sur les 4 modules du cours officiel — **pas un blueprint d'examen** ; guide Professional à consulter.
+Le Professional ne se limite pas à un aperçu : suivre désormais [le parcours complet D1–D7](professional/README.md), [son dossier HLD/ADR/contrôles](professional/cas-assurnova/README.md) et [ses 21 questions d'entraînement](professional/entrainement.md).
 
-- P1. Conception de solution (cadrage, architecture, modèle, coût/latence)
-- P2. Intégration entreprise et production
-- P3. IA responsable, sécurité et risques
-- P4. Parties prenantes, cycle de vie et adoption
-
-Pratique : dossier d'architecture construit sur les labos (HLD, ADR, matrice de contrôles, plan d'évaluation, runbook).
+Le guide Professional v1.0 (juillet 2026) est utilisé comme base et devra être **revalidé après la publication annoncée du nouveau guide du 17 novembre 2026** (examen révisé annoncé le 7 décembre 2026).
 
 ## Avancement
 
