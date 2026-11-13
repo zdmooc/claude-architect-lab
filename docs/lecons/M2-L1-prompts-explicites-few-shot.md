@@ -90,7 +90,19 @@ Chaque critère est maintenant **vérifiable** par un relecteur ou un test.
 - **E3.** Ton prompt dit « ne rembourse jamais plus de 1 000 € sans validation ». Pourquoi est-ce insuffisant en production, et que faut-il ajouter ?
 
 ## 7. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Exemple : « Un message est **urgent** s'il mentionne : une opération non reconnue sur le compte, une carte perdue ou volée, un prélèvement en cours à bloquer, ou une échéance dans les 24 h. Sinon il est **normal**. Si le message en contient plusieurs, il suffit qu'un critère soit présent. »
+- **E2.** « *Ma carte a été avalée par le distributeur, je pars demain à l'étranger* » → urgent (risque + échéance). « *Je voudrais augmenter mon plafond pour un achat le mois prochain* » → normal (pas de risque, pas d'échéance proche).
+- **E3.** Un prompt **guide**, il ne **garantit** pas : le modèle peut s'en écarter (prompt long, cas inattendu, injection). Il faut un **contrôle programmatique** dans l'outil ou un hook (si montant > 1 000 € : refus + validation humaine).
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Critères **vérifiables**, raison donnée, données **balisées**.
+- Few-shot : exemples **difficiles et variés**, dont un cas « absent ».
+- Règle critique → **code**, pas seulement prompt.
+
+</details>

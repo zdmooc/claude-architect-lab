@@ -25,4 +25,15 @@ A. Garder la plus récente sans le dire · B. Faire la moyenne · C. Conserver l
 **Q5.** (2 réponses) Bons déclencheurs d'escalade :
 A. Montant au-delà d'un seuil défini · B. « Je ne suis pas sûr » selon le modèle, seul critère · C. Échecs répétés d'un outil · D. Longueur de la question
 
-*Correction après tes réponses.*
+## Corrigé
+<details><summary>Voir les réponses</summary>
+
+| Q | Réponse | Justification |
+|---|---|---|
+| Q1 | **B** | Préserver les faits critiques hors du flux qui se dilue. A ne concerne que la réponse. |
+| Q2 | **B** | Demande explicite d'humain = déclencheur immédiat, transfert structuré. |
+| Q3 | **B** | Un global élevé peut masquer un segment défaillant. |
+| Q4 | **C** | Provenance : conserver, attribuer, dater, signaler. |
+| Q5 | **A, C** | Explicites et testables. B : confiance mal calibrée comme seul critère. |
+
+</details>

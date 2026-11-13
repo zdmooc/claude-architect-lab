@@ -43,6 +43,27 @@ Une revue n'a pas besoin d'écrire : `allowed-tools: Read, Grep, Glob`. Même lo
 - **E3.** Commande ou Skill pour : (a) « génère le changelog de la release » lancé par le responsable de release ; (b) « vérifie la conformité RGPD d'un module » que Claude devrait appliquer de lui-même quand on touche aux données personnelles ?
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.**
+```yaml
+---
+name: generer-tests
+description: Génère des tests pytest pour un module Python. À utiliser quand on demande d'ajouter ou compléter des tests.
+allowed-tools: Read, Glob, Grep, Write, Edit
+context: fork
+---
+```
+`context: fork` : la génération produit beaucoup de lectures intermédiaires ; on les isole et on ne garde que le résultat.
+- **E2.** Une commande de **prod** personnelle : non versionnée, non relue, propre à une personne. La mettre dans `.claude/commands/` du **projet**, revue en PR. Et surtout la **protéger** : un déploiement prod passe par la CI/CD avec validation, pas par une commande libre.
+- **E3.** (a) **Commande** (déclenchée explicitement par quelqu'un). (b) **Skill** (Claude l'invoque de lui-même grâce à sa `description`).
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Commande = lancée par l'utilisateur (`/nom`). Skill = choisie par Claude via sa `description`.
+- `allowed-tools` limite les outils ; `context: fork` isole les intermédiaires ; `argument-hint` documente les arguments.
+- Commandes d'équipe dans le projet, versionnées.
+
+</details>

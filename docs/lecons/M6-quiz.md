@@ -24,4 +24,15 @@ A. Décomposition adaptative · B. Pipeline séquentiel · C. Un seul agent sans
 **Q5.** Rôle de `max_turns` ?
 A. Condition d'arrêt normale · B. Garde-fou contre les boucles · C. Limite de coût exacte · D. Nombre de sous-agents
 
-*Correction après tes réponses.*
+## Corrigé
+<details><summary>Voir les réponses</summary>
+
+| Q | Réponse | Justification |
+|---|---|---|
+| Q1 | **B** | Règle critique → hook déterministe ; A et C restent du prompt. |
+| Q2 | **B** | Le sous-agent ne connaît que ce qu'on lui passe. |
+| Q3 | **A, C** | Couverture complète sans doublon, synthèse facile. B gaspille ; D complique l'agrégation. |
+| Q4 | **B** | Étapes stables et connues → pipeline. |
+| Q5 | **B** | Garde-fou ; l'arrêt normal est la fin de la tâche. |
+
+</details>

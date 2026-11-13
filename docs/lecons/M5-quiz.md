@@ -27,4 +27,16 @@ A. Exécution directe · B. Plan mode · C. CI non interactive · D. Une command
 **Q6.** Pourquoi une instance indépendante pour la revue ?
 A. Elle coûte moins cher · B. Elle n'hérite pas du contexte et des angles morts de la session de génération · C. C'est obligatoire techniquement · D. Elle est plus rapide
 
-*Correction après tes réponses.*
+## Corrigé
+<details><summary>Voir les réponses</summary>
+
+| Q | Réponse | Justification |
+|---|---|---|
+| Q1 | **B** | Partagé = `CLAUDE.md` projet versionné. C est personnel et ignoré par Git. |
+| Q2 | **B** | Règle ciblée par motif, un seul endroit à maintenir. |
+| Q3 | **C** | `context: fork` isole les intermédiaires. |
+| Q4 | **A, C** | Non interactif + sortie JSON exploitable. D ne produit pas de modifications, ce n'est pas la question. |
+| Q5 | **B** | Changement large et flou : planifier, valider, puis exécuter. |
+| Q6 | **B** | Indépendance = pas d'angles morts hérités. |
+
+</details>

@@ -61,7 +61,19 @@ appelé à chaque tour d'un chatbot.
 - **E3.** (papier) Propose une modification du script pour qu'il ne garde que les 10 derniers messages. Quel risque cela introduit-il, et comment le compenser ?
 
 ## 7. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** `input_tokens` **augmente à chaque tour** : tout l'historique est renvoyé.
+- **E2.** Claude ne « se souvient » plus de sa réponse précédente : il voit deux questions utilisateur d'affilée sans sa réponse, la référence n'a plus de sens.
+- **E3.** `historique = historique[-10:]` (en gardant un nombre pair et en commençant par un message `user`). Risque : perdre un fait donné au début (contrat, montant). Compensation : un **bloc de faits** permanent ou un **résumé guidé** des messages retirés (M7·L1).
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- L'application ajoute question **et réponse complète** (`response.content`) à chaque tour.
+- Le coût **croît** avec la longueur de la conversation.
+- Ne pas enregistrer comme complet un tour `max_tokens` ou `refusal`.
+
+</details>

@@ -48,4 +48,16 @@ Réponds par la lettre et **une phrase de justification**. Une seule bonne répo
 - C. « Au-delà de 1 000 €, n'exécute rien : réponds que la demande est transmise à un conseiller »
 - D. « Réponds de façon professionnelle »
 
-*Correction et points à retravailler après tes réponses.*
+## Corrigé
+<details><summary>Voir les réponses</summary>
+
+| Q | Réponse | Justification |
+|---|---|---|
+| Q1 | **B** | Champ requis = invention forcée. A : le prompt seul ne règle pas la contrainte du schéma. C : relancer n'ajoute pas l'info absente. D : disproportionné, même cause. |
+| Q2 | **B** | Le schéma garantit la forme, pas le sens → validation métier dans le code. |
+| Q3 | **A, C** | Volume, pas d'attente. B et D attendent une réponse immédiate : jamais en batch. |
+| Q4 | **B** | Ordre non garanti : corréler par `custom_id`. |
+| Q5 | **C** | Information absente de la source : null + ambiguïté + humain. B serait une invention. |
+| Q6 | **C** | Seuil chiffré et action précise : vérifiable. Les autres sont vagues. |
+
+</details>

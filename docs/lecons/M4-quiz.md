@@ -25,4 +25,15 @@ A. Projet · B. Utilisateur · C. Dans le code de l'application · D. Dans le pr
 **Q5.** Pourquoi lever une erreur explicite et structurée plutôt que laisser l'exception remonter ?
 A. Pour réduire la latence · B. Pour que le modèle sache s'il doit corriger, réessayer ou escalader · C. Parce que MCP l'impose · D. Pour éviter la journalisation
 
-*Correction après tes réponses.*
+## Corrigé
+<details><summary>Voir les réponses</summary>
+
+| Q | Réponse | Justification |
+|---|---|---|
+| Q1 | **B** | Contenu de référence stable → resource. |
+| Q2 | **B** | Exception non gérée → message générique ; seul `ToolError` transmet ton message. |
+| Q3 | **A, C** | Secrets en `${VAR}`, serveurs utiles au projet. B : un jeton commité est compromis. D : le personnel va en portée utilisateur. |
+| Q4 | **B** | Personnel et multi-projets → utilisateur. |
+| Q5 | **B** | Le modèle a besoin de savoir quoi faire ensuite. C : pas une obligation du protocole. |
+
+</details>

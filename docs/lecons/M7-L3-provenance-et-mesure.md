@@ -36,6 +36,18 @@ Décision sur la base du résultat observé : les factures peuvent passer en tra
 - **E3.** Pourquoi une valeur de confiance déclarée par le modèle ne suffit-elle pas à fixer un seuil de revue ?
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** 2 avis × 2 champs = 4 champs, dont 1 faux (si l'erreur porte sur un seul champ) : global **9/12 = 75 %**, en **hausse** par rapport à 6/8. Pourtant les déclarations restent à 50 % sur chaque champ : le global peut s'améliorer tout en masquant un segment défaillant. Seul le détail par type et par champ le montre.
+- **E2.** La **source** (qui, document), sa **date**, et le niveau de certitude ou d'hypothèse.
+- **E3.** La confiance déclarée n'est pas **calibrée** ; on fixe le seuil à partir d'une **mesure sur un jeu annoté**, par segment.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Mesurer **par type et par champ**, pas seulement le global.
+- Chaque affirmation garde **source et date** ; les contradictions sont **conservées et signalées**.
+- Seuils de revue fondés sur la mesure, pas sur l'auto-évaluation du modèle.
+
+</details>

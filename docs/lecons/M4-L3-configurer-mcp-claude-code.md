@@ -43,6 +43,21 @@ Un développeur committe `.mcp.json` avec `"REFERENTIEL_TOKEN": "eyJhbGciOi..."`
 - **E3.** Un nouveau développeur clone le dépôt et le serveur MCP échoue au démarrage. Cite deux causes probables liées à cette leçon.
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** « référentiel contrats » → portée **projet** (`.mcp.json` versionné). « mes notes » → portée **utilisateur** (`claude mcp add -s user`).
+- **E2.**
+```json
+{"mcpServers": {"ged-sinistres": {"command": "node", "args": ["ged.js"],
+  "env": {"GED_URL": "https://ged.exemple.interne", "GED_TOKEN": "${GED_TOKEN}"}}}}
+```
+- **E3.** (1) La variable **`GED_TOKEN` n'est pas définie** dans son environnement. (2) Il n'a pas **approuvé** le serveur projet au premier lancement, ou la dépendance (`node`, paquets) manque.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Projet = `.mcp.json` partagé ; utilisateur = personnel, tous projets ; local = ce projet, pour soi.
+- Secrets : `${VAR}`, jamais en clair. Jeton commité → **révoquer** d'abord.
+
+</details>

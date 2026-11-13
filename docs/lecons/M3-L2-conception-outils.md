@@ -64,7 +64,19 @@ Les deux descriptions disent **quand** et **quand pas**.
 - **E3.** Un agent « relation client » a les outils `consulter_contrat`, `lister_sinistres`, `modifier_iban`, `rembourser`. Lesquels retirerais-tu et pourquoi ?
 
 ## 7. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Le test « nom inconnu → liste vide » casse. Mauvaise idée : une liste vide est un **résultat valide** (« aucun client ne porte ce nom »). En faire une erreur pousse le modèle à réessayer ou à croire à une panne. **Vide ≠ échec.**
+- **E2.** `{"is_error": true, "categorie": "autorisation", "message": "Accès refusé au contrat HAB-2210 pour ce profil.", "reessayable": false}`. Non, il ne doit **pas** réessayer : il explique à l'utilisateur et, si besoin, escalade.
+- **E3.** Retirer **`modifier_iban`** et **`rembourser`** de l'agent de consultation : actions sensibles hors de son rôle (fraude, erreur). Si le rôle les exige vraiment, les garder **avec contrôles dans le code** (identité vérifiée, seuil) et validation humaine.
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Description = **quoi, quand, quand pas**, formats. L'améliorer **avant** d'ajouter un routeur.
+- Erreurs structurées : catégorie, message, `reessayable`. **Vide ≠ échec.**
+- Moindre privilège : outils limités au rôle.
+
+</details>

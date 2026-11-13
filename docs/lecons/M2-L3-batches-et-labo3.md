@@ -57,7 +57,19 @@ Sur 100 factures : 93 `succeeded`, 4 `errored`, 3 `expired`. Parmi les 93, 6 éc
 - **E3.** (avec clé, facultatif — **coût faible mais réel, préviens-moi avant**) Lance `extraire.py` sur les 5 factures du corpus. Pour chacune, note : valide / relancée / revue humaine. Compare avec les « cas pièges » annoncés dans le README du labo.
 
 ## 7. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Non : le batch n'a **aucune garantie de délai** (jusqu'à 24 h) alors que le virement attend la décision. Il faut un appel **synchrone**, plus un contrôle programmatique.
+- **E2.** Les résultats arrivent **dans n'importe quel ordre** → `zip` associe des résultats aux mauvais documents. Corréler par `custom_id`.
+- **E3.** Attendu d'après les pièges : F001 valide ; F002 valide avec HT `null` ; F003 relancée puis revue humaine (source incohérente) ; F004 valide, catégorie `autre` + « espaces verts » ; F005 revue humaine (illisible). Tes résultats réels sont ton **résultat observé**.
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Batch : environ 50 % moins cher, **asynchrone** (jusqu'à 24 h) → jamais pour un contrôle bloquant.
+- **`custom_id`** pour corréler ; ordre non garanti.
+- Reprise **sélective** des échecs techniques ; échecs métier → humain.
+
+</details>

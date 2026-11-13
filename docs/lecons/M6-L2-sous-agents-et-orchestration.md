@@ -50,6 +50,19 @@ Réécriture : « Analyse l'option *replatform WebSphere 8.5 → Liberty sur Ope
 - **E3.** Le rapport final ignore totalement le volet sécurité alors que les sous-agents sont bons. Où est probablement le problème ?
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Exemple : (1) **inventaire technique** (WebSphere, JVM, dépendances, configuration) ; (2) **plateforme cible** (images, ressources, réseau, stockage, observabilité sur OpenShift) ; (3) **risques et conformité** (sécurité, données, exploitation, plan de retour arrière). Vérifier la couverture : coût/planning et tests peuvent manquer → les ajouter au coordinateur ou à un 4ᵉ sous-agent.
+- **E2.** (a) **Séquentiel** : étapes connues et stables. (b) **Adaptatif** : on ne sait pas d'avance quoi explorer.
+- **E3.** Chez le **coordinateur** : la décomposition n'a pas prévu le volet sécurité, ou la synthèse l'a perdu. Les sous-agents ne font que ce qu'on leur confie.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Le sous-agent ne reçoit **que** ce qu'on lui transmet : contexte explicite.
+- Périmètres **complémentaires**, format de retour **commun**.
+- Pipeline séquentiel si stable ; décomposition adaptative si inconnu.
+- Outil de délégation : « Task » dans le guide, « Agent » dans le SDK actuel.
+
+</details>

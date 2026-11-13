@@ -51,6 +51,25 @@ Le contrôle est **testable sans IA** : c'est aussi un argument d'architecture.
 - **E3.** Un collègue propose de supprimer le hook « puisque le prompt le dit déjà ». Réponds-lui en trois phrases.
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Le code teste `montant > 1000` → **1 000 € exactement passe**. Est-ce voulu ? Cela dépend de la règle métier (« au-delà de » ou « à partir de ») : à **faire préciser** et à couvrir par un test de limite.
+- **E2.**
+```python
+async def masquer_iban(input_data, tool_use_id, context):
+    texte = str(input_data.get("tool_response", ""))
+    propre = re.sub(r"\bFR\d{2}(?:\s?\w{4}){5}\s?\w{3}\b", "[IBAN masqué]", texte)
+    return {"hookSpecificOutput": {"hookEventName": "PostToolUse", "additionalContext": propre}}
+```
+(Selon la version du SDK, vérifier comment remplacer réellement la sortie.) Utile pour D5 : on réduit le contexte au **nécessaire** et on évite qu'une donnée sensible soit reprise dans une réponse ou un journal.
+- **E3.** « Le prompt guide, il ne garantit pas : un message ambigu ou une injection peut le contourner. Le hook est **déterministe** et s'exécute à chaque appel. On garde les deux : le prompt pour bien se comporter, le hook pour ne jamais franchir la limite. »
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Agent SDK = harnais de Claude Code dans ton code (`query`, `ClaudeAgentOptions`).
+- Hook `PreToolUse` → `permissionDecision: "deny"` pour une règle critique.
+- Tester les **valeurs limites** des seuils.
+
+</details>

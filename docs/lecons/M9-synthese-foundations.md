@@ -17,7 +17,18 @@
 6. **Claude Code** : ce qui va dans `CLAUDE.md` projet, une règle `paths`, la commande CI (M5).
 7. **Mesure** : comment tu sais que l'extraction est assez bonne, par segment (M7·L3).
 
-Je corrige avec une grille par domaine D1–D5.
+Je corrige avec une grille par domaine D1–D5. Un corrigé type est ci-dessous, à ouvrir **après** avoir rédigé ta version.
+
+<details><summary>Corrigé type (proposition, d'autres choix se défendent)</summary>
+
+1. **Surfaces** : assistant assurés → **API Messages + boucle tool use** (ou Agent SDK si besoin de hooks/sous-agents) hébergé chez l'assureur ; extraction nocturne → **Message Batches** ; développeurs → **Claude Code** ; revue → **Claude Code en CI** (`-p`) ; référentiel → **serveur MCP** réutilisable par l'agent et par Claude Code.
+2. **Outils** : `verifier_identite`, `consulter_contrat`, `lister_sinistres`, `lire_facture`, `proposer_remboursement`, `transferer_gestionnaire`. Chacun avec quoi/quand/quand pas ; erreurs `{categorie, message, reessayable}` ; vide ≠ échec. L'assistant n'a **pas** d'outil de paiement direct.
+3. **Contrôles** : dans le code de `proposer_remboursement` **et** un hook `PreToolUse` : refus si identité non vérifiée ; si montant > 800 € → refus + `transferer_gestionnaire`. Tests aux limites (800,00 / 800,01).
+4. **Extraction** : schéma Pydantic (fournisseur, date, HT, TVA, TTC nullables, `ambiguites`) ; validation HT+TVA=TTC ; batch avec `custom_id` ; reprise sélective des échecs techniques ; échecs métier → file de revue humaine.
+5. **Contexte et escalade** : bloc de faits (assuré, contrat, sinistre, montant facture, identité vérifiée oui/non, étape) ; déclencheurs : > 800 €, demande d'humain, 2 échecs d'outil, contrat résilié ; transfert structuré (qui, quoi, déjà fait, manque, cause).
+6. **Claude Code** : `CLAUDE.md` projet (commandes de test, conventions, interdits : pas de secrets, données synthétiques) ; règle `paths: "src/remboursement/**"` rappelant le seuil et les tests de limite ; CI : `claude -p --output-format json --json-schema ... --allowedTools "Read,Grep,Glob"`.
+7. **Mesure** : jeu annoté de factures réelles anonymisées, exactitude **par champ et par type** (garage agréé, indépendant, scan) ; seuil d'automatisation par segment ; échantillonnage continu en production.
+</details>
 
 ## 2. Bilan (à remplir avec moi)
 | Domaine | Poids (dossier) | Niveau (0 inconnu · 1 expliqué · 2 reproduit avec aide · 3 autonome) | Point à retravailler |

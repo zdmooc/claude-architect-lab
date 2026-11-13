@@ -38,6 +38,18 @@ L'outil de suivi échoue deux fois. L'agent répond : « Votre dossier est en co
 - **E3.** Pourquoi « escalade si ta confiance < 70 % » est-il un mauvais déclencheur principal ?
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Mots-clés : « décès », « blessé ». Limite : synonymes, fautes, négations (« personne n'est blessé »), contexte. À compléter par une classification du modèle **et** des règles, avec tests.
+- **E2.** `{"client": "C-1002", "contrat": "HAB-2210", "statut_contrat": "résilié", "demande": "indemnisation dégâts des eaux", "cause_escalade": "contrat résilié + outil historique indisponible", "deja_fait": ["contrat consulté"], "manque": ["historique des sinistres"], "action_suggeree": "vérifier date de résiliation vs date du sinistre"}`.
+- **E3.** La confiance auto-déclarée est **mal calibrée** et non vérifiable. Les déclencheurs principaux doivent être **explicites et testables** : demande d'humain, seuil, échecs répétés, sujet sensible.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Déclencheurs explicites : demande d'un humain, seuil, échecs d'outil, sujet sensible.
+- Transfert **structuré** : qui, quoi, déjà fait, ce qui manque, cause.
+- Distinguer erreur réessayable / non réessayable / résultat vide.
+
+</details>

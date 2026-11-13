@@ -51,6 +51,18 @@ Classe en tool / resource / prompt, avec une justification d'une ligne :
 - **D.** Obtenir le solde d'un compte client à une date donnée.
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **A. Resource** : documentation de référence, stable, lue comme contexte.
+- **B. Tool** : action avec effet de bord, décidée par le modèle.
+- **C. Prompt** : gabarit réutilisable choisi par l'utilisateur.
+- **D. Tool** : requête paramétrée (client, date) sur une donnée qui change.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- **Tool** = action décidée par le modèle ; **resource** = contenu de référence par URI ; **prompt** = gabarit choisi par l'utilisateur.
+- Un serveur par système, réutilisable par tout client MCP.
+
+</details>

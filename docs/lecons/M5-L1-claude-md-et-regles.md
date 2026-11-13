@@ -55,6 +55,18 @@ Ce diagnostic de portée est un scénario typique du guide (dossier §7.2 : « e
 - **E3.** (avec Claude Code) Ouvre `labs/labo2_claude_code`, demande « quelles règles s'appliquent quand tu modifies tests/test_devis.py ? ». Note ce qu'il répond.
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** (a) `CLAUDE.md` du **projet** (partagé). (b) `~/.claude/CLAUDE.md` (**utilisateur**). (c) `CLAUDE.local.md` (personnel à ce projet, ignoré par Git).
+- **E2.** Une règle `paths: "**/test_*.py"` s'applique **partout où le motif correspond**, se maintient à **un seul endroit** et suit les nouveaux dossiers ; plusieurs `CLAUDE.md` se dupliquent et divergent.
+- **E3.** Résultat observé à toi. Attendu : `CLAUDE.md` + `docs-equipe.md` importé, plus `.claude/rules/tests.md` ; **pas** `tarification.md` (motif `src/**/*.py`).
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Hiérarchie : utilisateur (`~/.claude/CLAUDE.md`) · projet (`CLAUDE.md`, versionné) · local (`CLAUDE.local.md`).
+- `@import` pour factoriser ; `.claude/rules/` + `paths:` pour cibler.
+- Conventions d'équipe dans la config utilisateur = invisibles pour les autres.
+
+</details>

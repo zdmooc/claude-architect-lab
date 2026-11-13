@@ -58,6 +58,18 @@ Aucun de ces contrôles ne dépend du prompt.
 - **E3.** Pourquoi la procédure franchise est-elle une ressource et pas un outil ?
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Avec `ToolError`, le modèle reçoit `is_error=True` **et ton message** (« contrat introuvable : HAB-9999 ») : il peut corriger. Avec `ValueError`, il reçoit un **message générique** : il ne sait pas pourquoi, il risque de réessayer à l'aveugle ou d'inventer.
+- **E2.** `@serveur.tool()` `def rechercher_client(nom: str) -> list[dict]` qui filtre la base fictive et renvoie `[]` si rien. Test : `resultat = await serveur.call_tool("rechercher_client", {"nom": "Inconnu"})` → pas d'`is_error`, contenu = liste vide.
+- **E3.** C'est un **texte de référence stable** que le client charge comme contexte ; il n'y a aucun paramètre ni action. Un outil serait justifié pour **chercher** dedans.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- `mcp` 2.x : `MCPServer` (ex-`FastMCP`), `@serveur.tool()`, `@serveur.resource(uri)`.
+- `ToolError` → message transmis au modèle ; autre exception → message générique.
+- Les contrôles métier sont **dans l'outil**, pas dans le prompt.
+
+</details>

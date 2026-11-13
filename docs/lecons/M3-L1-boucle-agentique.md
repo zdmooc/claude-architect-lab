@@ -56,7 +56,19 @@ Question : *« Quels sinistres sur le contrat de Mme Durand ? »*
 - **E3.** Propose un 4ᵉ outil qui comble le trou de l'exercice guidé : nom, description (2 phrases), schéma d'entrée.
 
 ## 7. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Il fallait tester `stop_reason` ; ici il valait **`tool_use`**. Le texte n'est qu'un commentaire intermédiaire : le code devait exécuter l'outil, renvoyer le `tool_result` et relancer.
+- **E2.** L'arrêt normal, c'est `end_turn`. `MAX_TOURS` est un **garde-fou** contre une boucle infinie (outil qui échoue en boucle, modèle qui tourne en rond). L'atteindre est une **anomalie** : journaliser, ne pas présenter la dernière réponse comme finale, escalader vers un humain.
+- **E3.** `lister_contrats_client` — « Renvoie la liste des contrats (numéro, produit, statut) d'un client identifié par son identifiant interne. À utiliser après `rechercher_client` ; ne renvoie ni sinistres ni montants. » Schéma : `{"type":"object","properties":{"client_id":{"type":"string","pattern":"^C-\\d{4}$"}},"required":["client_id"]}`.
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- La boucle tourne tant que `stop_reason == "tool_use"` ; on s'arrête sur `end_turn`.
+- Renvoyer la réponse **complète** de l'assistant, puis **tous** les `tool_result` dans un seul message user.
+- Le jeu d'outils définit le périmètre : un trou → une question ou une hallucination.
+
+</details>

@@ -60,7 +60,19 @@ Facture F003 : « HT 6 000 €, TVA 1 200 €, TTC 7 300 € ».
 - **E3.** Facture F005 (illisible). Décris ce que le système **doit** produire, champ par champ pour les montants, et pourquoi il ne faut pas relancer trois fois.
 
 ## 7. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Une facture sans fournisseur identifiable est inexploitable, d'où le champ requis. Mais si le nom est illisible, le modèle sera **forcé d'inventer**. Variante plus sûre : le rendre nullable et envoyer en revue humaine quand il vaut `null`. Les deux choix se défendent si on l'argumente.
+- **E2.** Règle : si HT et TVA présents, `round(tva/ht, 3)` doit être proche de 0,20 / 0,10 / 0,055 / 0,021. Message : « montant_tva (73,00) = 14,6 % de montant_ht (500,00) : aucun taux usuel (20 %, 10 %, 5,5 %, 2,1 %). Relis la TVA dans la facture. »
+- **E3.** Montants HT et TTC `null` (illisibles), date `null` ou ambiguë, `ambiguites` renseigné (« chiffres illisibles ») → **revue humaine**. Relancer ne fera pas apparaître une information absente de la source : on gaspille des appels et on pousse le modèle à deviner.
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Le schéma garantit la **forme** ; ton code vérifie le **sens**.
+- Champs **nullables** pour ce qui peut manquer ; catégorie `autre` + précision ; champ d'ambiguïtés.
+- Relance : **erreur précise**, nombre **plafonné** ; info absente → humain.
+
+</details>

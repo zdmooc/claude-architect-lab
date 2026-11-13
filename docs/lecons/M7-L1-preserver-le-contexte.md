@@ -36,6 +36,18 @@ Une conversation de 40 tours a été résumée automatiquement : « Le client a 
 - **E3.** Pourquoi placer le bloc de faits **en tête** plutôt qu'au milieu de l'historique ?
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Client (id), projet (adresse, prix), montant demandé, durée, taux proposé, apport, revenus, pièces reçues et manquantes, étape du dossier, échéances, décisions déjà prises, conseiller.
+- **E2.** Garder : numéro de dossier, étape, date de dernière mise à jour, pièces manquantes, prochaine action. Filtrer **dans l'outil** (ou un hook `PostToolUse`), avant que le modèle ne voie le résultat.
+- **E3.** Le modèle exploite moins bien l'information **noyée au milieu** d'un long contexte ; en tête, elle est vue à chaque tour et ne disparaît pas lors d'un résumé.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- **Bloc de faits** structuré, renvoyé à chaque tour, en tête.
+- Réduire les résultats d'outils **à la source**.
+- Résumé guidé qui préserve montants, dates, engagements.
+
+</details>

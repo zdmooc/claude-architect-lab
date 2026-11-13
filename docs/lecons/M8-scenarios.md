@@ -58,4 +58,22 @@ Fine-tuning, architecture interne du modèle, embeddings et bases vectorielles, 
 - **S6-Q2.** Clôture mensuelle de 30 000 factures, résultat attendu sous 48 h, budget serré. Mode ?
   A. Synchrone · B. Message Batches avec `custom_id` et reprise sélective · C. Un agent multi-sous-agents · D. Claude Code en CI
 
-*Correction détaillée après tes réponses (avec justification des mauvaises options).*
+## Corrigé
+<details><summary>Voir les réponses</summary>
+
+| Q | Réponse | Pourquoi | Pourquoi pas les autres |
+|---|---|---|---|
+| S1-Q1 | **B** | Le prompt est déjà explicite : il faut un contrôle déterministe. | A, C : toujours probabiliste. D : lourd, et toujours un modèle. |
+| S1-Q2 | **B** | Cause = consigne incomplète ; ajouter « identifie toutes les demandes » + vérification de complétude. | A : la réponse n'est pas coupée. C, D : disproportionné ou hors sujet. |
+| S2-Q1 | **A** | Config utilisateur invisible pour l'équipe → `CLAUDE.md` projet. | B, C, D : ne traitent pas la portée. |
+| S2-Q2 | **B** | Large et flou : planifier puis valider. | A : risqué. C, D : hors sujet. |
+| S3-Q1 | **B** | Les sous-agents font ce qu'on leur confie : trou de décomposition. | A : les sous-agents sont bons. C, D : n'expliquent pas une omission totale. |
+| S3-Q2 | **C** | Provenance conservée et signalée. | A, B : perte d'information. D : coût sans garantie. |
+| S4-Q1 | **B** | Glob = recherche de fichiers par motif. | A lit le contenu ; C, D modifient. |
+| S4-Q2 | **A** | Serveur partagé en projet, jeton personnel via variable d'environnement de chacun. | B, C : secret en clair. D : ni maintenable ni à jour. |
+| S5-Q1 | **B** | Faux positifs → gravité + précision ; on rétablit la confiance. | A : perte de la revue. C, D : hors sujet. |
+| S5-Q2 | **A, B** | Non interactif + sortie structurée. | C : interactif. D : ne produit pas un résultat lisible par le pipeline à lui seul. |
+| S6-Q1 | **B** | Champ requis = invention forcée ; nullable + exemple d'absence. | A : n'ajoute pas l'info. C, D : même cause. |
+| S6-Q2 | **B** | Volume, 48 h, budget → batch (≤ 24 h, environ −50 %). | A : plus cher. C, D : inadapté. |
+
+</details>

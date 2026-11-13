@@ -29,4 +29,16 @@ A. Dans le prompt système, en gras · B. Dans le code : `modifier_iban` refuse 
 **Q6.** La boucle atteint `MAX_TOURS`. Que faire ?
 A. Renvoyer la dernière réponse comme finale · B. Augmenter `MAX_TOURS` à 100 · C. Traiter comme une anomalie : journaliser et escalader · D. Relancer depuis zéro
 
-*Correction après tes réponses.*
+## Corrigé
+<details><summary>Voir les réponses</summary>
+
+| Q | Réponse | Justification |
+|---|---|---|
+| Q1 | **B** | On suit `stop_reason`, pas la présence de texte. |
+| Q2 | **C** | Cause racine = descriptions ambiguës ; solution proportionnée avant tout routeur (A) ou changement de modèle (B). |
+| Q3 | **B** | Échec d'accès confondu avec résultat vide : renvoyer une erreur structurée réessayable. |
+| Q4 | **A, C** | Un seul message user, chaque résultat lié par `tool_use_id`. D : les erreurs doivent aussi être renvoyées (`is_error`). |
+| Q5 | **B** | Règle critique → contrôle déterministe dans le code. |
+| Q6 | **C** | Garde-fou atteint = anomalie. A présente un résultat incomplet ; B masque le problème. |
+
+</details>

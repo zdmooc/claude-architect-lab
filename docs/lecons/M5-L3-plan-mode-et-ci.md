@@ -49,6 +49,18 @@ Une revue automatique trop bavarde est ignorée. Dans la consigne : « liste uni
 - **E3.** (avec Claude Code — consomme ton abonnement/crédits) Dans `labs/labo2_claude_code`, lance `bash ci/revue_ci.sh` et colle-moi `revue.json`.
 
 ## 7. Correction
-*Après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** (a) **Plan mode** : 40 fichiers, impact large, valider la démarche avant. (b) **Exécution directe** : changement local, borné et vérifié par un test.
+- **E2.** L'instance qui a écrit le code partage ses **hypothèses et angles morts** ; une instance neuve relit sans ce contexte et voit ce que l'auteur ne voit plus.
+- **E3.** Avec ta revue réelle, je commenterai. Attendu : JSON conforme au schéma, problèmes avec **gravité**, idéalement aucun faux positif sur `devis.py`.
+
+</details>
 ## 8. À retenir pour l'examen
-*Avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Plan mode pour un changement large ou flou ; exécution directe pour un changement simple et testé.
+- CI : `claude -p`, `--output-format json`, `--json-schema`, `--allowedTools` restreint.
+- Revue par une **instance indépendante** ; gravité + seulement les vrais problèmes.
+
+</details>

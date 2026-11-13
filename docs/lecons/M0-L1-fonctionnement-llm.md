@@ -65,7 +65,22 @@ Réflexe : vérifier **ce que l'application envoie réellement** avant d'accuser
 - **Q3.** Un assistant invente un article de loi : nom du phénomène, cause, contrôle à prévoir en contexte bancaire.
 
 ## 7. Correction
-*Ajoutée après la réponse de l'apprenant.*
+<details><summary>Voir la correction</summary>
+
+**Q1.** Faux : l'API Messages est **stateless**, rien n'est gardé côté serveur. Conséquence : si l'application ne renvoie pas l'historique, chaque message arrive sans contexte (numéro de contrat, échanges, résultats d'outils oubliés) ; l'utilisateur croit que « le modèle oublie » et l'équipe cherche la panne au mauvais endroit. C'est l'application qui porte l'état.
+
+**Q2.** Problèmes : (1) **coût** — le document est renvoyé et facturé à chacun des 30 tours ; (2) **qualité/latence** — contexte saturé, information utile noyée, réponses plus lentes, risque d'atteindre la limite. Pistes : n'envoyer **que les passages utiles** à la question du tour, extraire une fois un **bloc de faits** ; convertir en texte/Markdown propre aide en complément (moins de bruit) mais ne règle pas le renvoi à chaque tour.
+
+**Q3.** **Hallucination** : le modèle génère la suite la plus plausible, pas une vérité vérifiée ; une référence juridique « qui sonne juste » est plausible. Contrôle bancaire : n'autoriser que des références **issues d'une source fournie** (base juridique interne, citée avec extrait), **vérifier par programme** que l'article cité existe dans le référentiel, et à défaut répondre « je ne trouve pas » ou escalader.
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- API **stateless** : l'application renvoie l'historique ; ce qui n'est pas renvoyé n'existe pas.
+- Le **token** est l'unité de coût, de limite et de `max_tokens` (qui borne la réponse).
+- Contexte **fini** : volume et position de l'information comptent.
+- **Hallucination** = plausible ≠ vrai → sources fournies + contrôle programmatique.
+
+</details>

@@ -42,7 +42,18 @@ Le contrôle est **déterministe**, côté code, quel que soit le mode (manuel o
 - **E3.** (avec clé, facultatif) Lance `tool_runner.py`. Combien d'itérations observes-tu ? Les deux outils ont-ils été appelés dans la même réponse ?
 
 ## 7. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** (1) **Contrôle** fin entre deux tours : journalisation, validation humaine, arrêt conditionnel. (2) **Gestion d'erreurs et de budget** sur mesure (compteur, timeouts, reprise). Aussi : le Tool Runner est en **bêta**.
+- **E2.** « Non : le Tool Runner est une fonction du SDK client qui exécute la boucle tool use sur **tes** outils. L'Agent SDK fournit le harnais complet de Claude Code (outils fichiers/bash, sous-agents, hooks, permissions). »
+- **E3.** Résultat observé à toi. Attendu : 2 ou 3 itérations ; Claude peut demander les deux outils **dans la même réponse** (appels parallèles) s'ils sont indépendants.
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Tool Runner = boucle fournie, **outils à toi**, bêta. ≠ Agent SDK.
+- Contrôles critiques **dans le code de l'outil**, quel que soit le mode.
+
+</details>
