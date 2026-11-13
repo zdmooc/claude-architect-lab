@@ -1,17 +1,22 @@
 # Claude Architect Lab
 
-Laboratoire francophone de préparation aux certifications **Claude Certified Architect — Foundations (CCAR-F)** et **Professional (CCAR-P)**. Contenus personnels et **données exclusivement synthétiques** : pas de secrets, de dossiers clients, ni de questions officielles copiées.
+Laboratoire francophone de préparation aux quatre certifications **Claude Certified Associate (CCAO-F), Developer (CCDV-F) et Architect (CCAR-F, CCAR-P)**. Contenus personnels et **données exclusivement synthétiques** : pas de secrets, de dossiers clients, ni de questions officielles copiées.
 
-## Deux parcours
+## Certifications couvertes — 4 parcours
 
-| Parcours | Niveau | Point d'entrée | État |
+| Certification | Code | Programme et exercices | Statut |
 |---|---|---|---|
-| **Foundations (CCAR-F)** | agents, tools, MCP, Claude Code, prompting, fiabilité | [Parcours M0–M9](docs/parcours.md) | cours, quiz, corrigés et labos dans `main` ; tests hors API en CI, appels API non exécutés |
-| **Professional (CCAR-P)** | conception entreprise, intégration, sécurité, évaluation, gouvernance, exploitation | [Programme D1–D7](docs/professional/README.md) | sept cours + étude de cas + 21 questions originales ; architecture simulée |
+| **Associate – Foundations** | CCAO-F | [7 domaines et cas ConseilNova](docs/associate/README.md) | cours rédigés ; 14 QCM ; pas d'examen complet |
+| **Developer – Foundations** | CCDV-F | [8 domaines et lab Developer](docs/developer/README.md) | cours rédigés ; 16 QCM ; tests offline |
+| **Architect – Foundations** | CCAR-F | [M0–M9](docs/parcours.md) | cours/labos ; intégration API à confirmer |
+| **Architect – Professional** | CCAR-P | [P1–P7 et AssurNova](docs/professional/README.md) | cours/cas ; intégration à confirmer |
+
+**Suivi des domaines, des preuves et des examens blancs manquants** : [tableau de bord des certifications](docs/certifications/suivi.md). Les montants, domaines et conditions d'inscription sont ceux des guides connus ; vérifier la version courante sur [Anthropic Partner Academy](https://anthropic-partners.skilljar.com/page/partner-certifications). Les contenus de ce dépôt ne sont **pas des supports officiels**.
 
 ## Entrées directes
 
-- [Cours Foundations](docs/lecons/) et [8 dossiers de labs](labs/)
+- [Cours Associate](docs/associate/README.md) et [cours Developer](docs/developer/README.md)
+- [Cours Architect Foundations](docs/lecons/) et [8 dossiers de labs](labs/)
 - [Tests et limites de validation Foundations](docs/foundations/verification.md)
 - [Cours Professional par domaine](docs/professional/README.md)
 - [Cas fil rouge AssurNova — 7 livrables d'architecture](docs/professional/cas-assurnova/README.md)
@@ -25,7 +30,7 @@ python -m pytest -q tests
 PYTHONPATH=labs/labo2_claude_code python -m pytest -q labs/labo2_claude_code/tests
 ```
 
-Le pipeline GitHub Actions `.github/workflows/verify-offline.yml` automatise ces tests **sans API key ni dépense de tokens**. Il ne constitue **pas** un test d'intégration à Claude : SDK, MCP et appels réseau doivent être validés séparément. Pour le labo Agent SDK : suivre [labs/labo1_support/README.md](labs/labo1_support/README.md).
+Le pipeline GitHub Actions `.github/workflows/verify-offline.yml` automatise ces tests, y compris les nouveaux tests du labo Developer, **sans API key ni dépense de tokens**. Il ne constitue **pas** un test d'intégration à Claude : SDK, MCP et appels réseau doivent être validés séparément. Pour le labo Agent SDK : suivre [labs/labo1_support/README.md](labs/labo1_support/README.md).
 
 ## Référentiel officiel et limite d'accès
 
