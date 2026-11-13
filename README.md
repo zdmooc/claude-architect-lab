@@ -6,8 +6,8 @@ Laboratoire francophone de préparation aux quatre certifications **Claude Certi
 
 | Certification | Code | Programme et exercices | Statut |
 |---|---|---|---|
-| **Associate – Foundations** | CCAO-F | [7 domaines et cas ConseilNova](docs/associate/README.md) | cours rédigés ; 14 QCM ; pas d'examen complet |
-| **Developer – Foundations** | CCDV-F | [8 domaines et lab Developer](docs/developer/README.md) | cours rédigés ; 16 QCM ; tests offline |
+| **Associate – Foundations** | CCAO-F | [7 domaines et cas ConseilNova](docs/associate/README.md) | cours rédigés ; 30 QCM ; pas d'examen complet |
+| **Developer – Foundations** | CCDV-F | [8 domaines et lab Developer](docs/developer/README.md) | cours rédigés ; 32 QCM ; tests offline |
 | **Architect – Foundations** | CCAR-F | [M0–M9](docs/parcours.md) | cours/labos ; intégration API à confirmer |
 | **Architect – Professional** | CCAR-P | [P1–P7 et AssurNova](docs/professional/README.md) | cours/cas ; intégration à confirmer |
 
@@ -20,7 +20,7 @@ Laboratoire francophone de préparation aux quatre certifications **Claude Certi
 - [Tests et limites de validation Foundations](docs/foundations/verification.md)
 - [Cours Professional par domaine](docs/professional/README.md)
 - [Cas fil rouge AssurNova — 7 livrables d'architecture](docs/professional/cas-assurnova/README.md)
-- [21 questions Professional originales](docs/professional/entrainement.md)
+- [35 questions Professional originales](docs/professional/entrainement.md)
 
 ## Tester hors API
 

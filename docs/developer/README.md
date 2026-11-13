@@ -36,7 +36,7 @@ Ceci est une **correspondance pédagogique** : l'ordre des cours et des domaines
 
 - [Lab Developer autonome hors API](../../labs/developer_foundations/README.md) : adapter `anthropic.messages.create` avec un client fictif, contrôler `stop_reason`, validation d'extraction, autorisation de lecture, reprise et coût.
 - [Cas fil rouge DevBank](cas-devbank.md) : dossier d'intégration, tool use, tracing, sécurité, critères de sortie.
-- [16 questions originales corrigées](entrainement.md) : révision ciblée, **pas** un examen blanc de 53 questions.
+- [32 questions originales corrigées](entrainement.md) : révision ciblée, **pas** un examen blanc de 53 questions.
 - Réutiliser les laboratoires Foundations : [M1](../../labs/m1/README.md), [M3](../../labs/m3/README.md), [M4](../../labs/m4/README.md), [Labo 1](../../labs/labo1_support/README.md).
 
 ### Validation
