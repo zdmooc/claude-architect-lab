@@ -23,6 +23,7 @@ async def main():
     assert refus_hook(await a.controle_remboursement(entree, "t1", None)), "identité non vérifiée -> refus"; n += 1
 
     a.ETAT["identite_verifiee"] = True
+    a.ETAT["contrats_autorises"] = {"AUTO-4471"}
     assert await a.controle_remboursement(entree, "t2", None) == {}, "vérifié + petit montant -> autorisé"; n += 1
 
     gros = {**entree, "tool_input": {"contrat": "AUTO-4471", "montant": 1500.0}}
@@ -32,8 +33,8 @@ async def main():
     autre = {"tool_name": "mcp__support__verifier_identite", "tool_input": {}}
     assert await a.controle_remboursement(autre, "t4", None) == {}, "autres outils non concernés"; n += 1
 
-    limite = {**entree, "tool_input": {"contrat": "AUTO-4471", "montant": 1000.0}}
-    assert await a.controle_remboursement(limite, "t5", None) == {}, "1 000,00 € exactement -> autorisé"; n += 1
+    limite = {**entree, "tool_input": {"contrat": "AUTO-4471", "montant": 800.0}}
+    assert await a.controle_remboursement(limite, "t5", None) == {}, "800,00 € exactement -> autorisé"; n += 1
 
     sans_montant = {**entree, "tool_input": {"contrat": "AUTO-4471"}}
     assert refus_hook(await a.controle_remboursement(sans_montant, "t6", None)), "montant absent -> refus"; n += 1
@@ -44,6 +45,7 @@ async def main():
     assert r.get("is_error") is True, "outil : identité non vérifiée -> refus même sans hook"; n += 1
 
     a.ETAT["identite_verifiee"] = True
+    a.ETAT["contrats_autorises"] = {"AUTO-4471"}
     r = await appeler_outil(1500.0)
     assert r.get("is_error") is True and json.loads(r["content"][0]["text"])["reessayable"] is False, \
         "outil : au-delà du seuil -> refus non réessayable"; n += 1
@@ -53,7 +55,16 @@ async def main():
     n += 1
 
     r = await appeler_outil(200.0)
-    assert not r.get("is_error") and "effectué" in r["content"][0]["text"], "outil : cas nominal"; n += 1
+    assert not r.get("is_error") and "enregistrée" in r["content"][0]["text"], "outil : cas nominal"; n += 1
+
+    autre_contrat = {**entree, "tool_input": {"contrat": "AUTO-9999", "montant": 200.0}}
+    assert refus_hook(await a.controle_remboursement(autre_contrat, "t7", None)), "inter-contrat -> refus hook"; n += 1
+    r = await a.rembourser.handler({"contrat": "AUTO-9999", "montant": 200.0})
+    assert r.get("is_error") is True, "inter-contrat -> refus outil"; n += 1
+
+    for invalide in (float("nan"), float("inf")):
+        assert (await appeler_outil(invalide)).get("is_error") is True, "NaN/Inf interdit"
+    n += 1
 
     print(f"OK : {n} tests passés (hook + outil)")
 
