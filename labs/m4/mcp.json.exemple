@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "referentiel-contrats": {
+      "command": "python",
+      "args": ["labs/m4/serveur_contrats.py"],
+      "env": {
+        "REFERENTIEL_TOKEN": "${REFERENTIEL_TOKEN}"
+      }
+    }
+  }
+}
