@@ -85,7 +85,20 @@ Sans mise en place (ou en plus) :
 - **E4.** Un collègue écrit la clé en dur dans le script « juste pour tester » et commit. Cite deux risques et la correction.
 
 ## 8. Correction
-*Ajoutée après ta réponse.*
+<details><summary>Voir la correction</summary>
+
+- **E1.** Résultat attendu : un texte court, `stop_reason = end_turn`, quelques dizaines à centaines de tokens. Tes chiffres exacts sont ton **résultat observé**.
+- **E2.** Réponse coupée net, `stop_reason = max_tokens`. Ce n'est pas une erreur du modèle : c'est ton plafond.
+- **E3.** `content` est une **liste de blocs** ; le premier peut être un bloc `thinking` (sans `.text`) → `content[0].text` peut échouer ou afficher autre chose. On filtre par `type`.
+- **E4.** Risques : clé exposée dans l'historique Git (même après suppression), utilisation frauduleuse facturée sur ton compte. Correction : **révoquer** la clé, en créer une nouvelle, la passer par variable d'environnement, scanner les secrets.
+
+</details>
 
 ## 9. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Requête : `model`, `max_tokens` (borne la réponse), `system`, `messages`.
+- Réponse : liste de blocs, **`stop_reason`** (tester avant d'exploiter), `usage` (facture).
+- Clé API = secret : variable d'environnement, jamais dans Git.
+
+</details>

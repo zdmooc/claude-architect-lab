@@ -47,3 +47,28 @@ Basée uniquement sur les 4 modules du cours officiel — **pas un blueprint d'e
 - P4. Parties prenantes, cycle de vie et adoption
 
 Pratique : dossier d'architecture construit sur les labos (HLD, ADR, matrice de contrôles, plan d'évaluation, runbook).
+
+## Avancement
+
+| Module | Leçons | Statut |
+|---|---|---|
+| M0 | L1, L2 | rédigé |
+| M1 | L1, L2 + `labs/m1` | rédigé |
+| M2 | L1, L2, L3 + quiz + `labs/labo3_extraction` | rédigé |
+| M3 | L1, L2, L3 + quiz + `labs/m3` | rédigé |
+| M4 | L1, L2, L3 + quiz + `labs/m4` | rédigé |
+| M5 | L1, L2, L3 + quiz + `labs/labo2_claude_code` | rédigé |
+| M6 | L1, L2 + quiz + `labs/labo1_support`, `labs/labo4_multiagent` | rédigé |
+| M7 | L1, L2, L3 + quiz + `labs/m7` | rédigé |
+| M8 | 6 scénarios, 12 questions | rédigé |
+| M9 | exercice de synthèse, bilan, transition | rédigé |
+
+## Ce qui est validé, et ce qui ne l'est pas
+
+| Élément | Statut |
+|---|---|
+| Tests hors API (M3, M4, labo 1, labo 2, labo 3) et scripts M7 | **exécutés** en local et en CI (`.github/workflows/tests-labs.yml`) |
+| Scripts qui appellent l'API ou Claude Code (M1, extraction, batch, Tool Runner, agents SDK, revue CI) | **compilés et vérifiés contre les SDK installés, non exécutés** : aucune clé API, pour éviter toute dépense |
+| Domaines et poids D1–D5 | cohérents avec le programme officiel ; détails des scénarios (4 sur 6, 60 questions) tirés du **dossier**, à confirmer dans le guide officiel |
+| Questions de quiz et de scénarios | **originales**, aucune reprise de questions d'examen ; leur représentativité n'est pas démontrée |
+| Parcours Professional | **orientation provisoire** tant que le guide Professional n'est pas consulté |

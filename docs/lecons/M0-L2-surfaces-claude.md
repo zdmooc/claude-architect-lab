@@ -84,7 +84,20 @@ Pour chaque besoin, indique **la surface** la plus adaptée et **une phrase de j
 - **D.** Un agent qui doit lire des fichiers, lancer des scripts et déléguer à des sous-agents, hébergé dans ton OpenShift.
 
 ## 7. Correction
-*Ajoutée après la réponse de l'apprenant.*
+<details><summary>Voir la correction</summary>
+
+- **A.** API Messages en **Message Batches** : volume, pas d'urgence, environ 50 % moins cher (M2·L3).
+- **B.** **claude.ai** : usage ponctuel, aucun code.
+- **C.** Un **serveur MCP** du référentiel : écrit une fois, utilisable par Claude Code, claude.ai et l'agent maison.
+- **D.** **Claude Agent SDK**, hébergé dans ton OpenShift : il fournit outils fichiers/bash, sous-agents et hooks.
+
+</details>
 
 ## 8. À retenir pour l'examen
-*Ajouté avec la correction.*
+<details><summary>Voir le résumé</summary>
+
+- Commencer par la **surface la plus simple** qui répond au besoin.
+- Tool use = fonctionnalité de l'API ; **Tool Runner ≠ Agent SDK** (tes outils seulement vs harnais complet de Claude Code).
+- MCP = **protocole** de connexion réutilisable, pas un produit d'exécution.
+
+</details>

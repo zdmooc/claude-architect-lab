@@ -1,0 +1,45 @@
+name: Tests des labos (hors API)
+
+# Aucun secret, aucun appel à l'API Claude : seuls les tests locaux sont lancés.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Installer les dépendances
+        run: pip install -r labs/requirements-ci.txt
+      - name: Compiler tous les scripts
+        run: python -m compileall -q labs
+      - name: M3 · outils et erreurs structurées
+        working-directory: labs/m3
+        run: python test_outils.py
+      - name: M4 · serveur MCP
+        working-directory: labs/m4
+        run: python test_serveur.py
+      - name: Labo 1 · contrôle du remboursement (hook + outil)
+        working-directory: labs/labo1_support
+        run: python test_hook.py
+      - name: Labo 2 · tests pytest du projet exemple
+        working-directory: labs/labo2_claude_code
+        run: python -m pytest -q tests
+      - name: Labo 3 · validation métier
+        working-directory: labs/labo3_extraction
+        run: python -m pytest -q test_validation.py
+      - name: M7 · scripts de démonstration
+        working-directory: labs/m7
+        run: |
+          python contexte.py
+          python escalade.py
+          python mesure.py
