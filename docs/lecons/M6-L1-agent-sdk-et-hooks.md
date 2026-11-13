@@ -34,26 +34,27 @@ Pour une étape **obligatoire** (conformité, argent, sécurité) → hook (ou c
 
 ## 4. Exemple commenté : `agent_support.py`
 - `ETAT["identite_verifiee"]` : l'état métier vit **dans le code**, pas dans la mémoire du modèle.
-- `controle_remboursement` : 3 décisions — refus sans identité, refus au-delà de 1 000 € (avec orientation vers un humain), sinon rien (laisse passer).
+- `politique.autoriser_operation` : la règle métier **unique** (identité vérifiée, contrat autorisé, montant valide, seuil de 800 €).
+- `controle_remboursement` (hook) **et** `rembourser` (outil) appellent tous deux cette règle : défense en profondeur. Refus → orientation vers un humain ; sinon le hook laisse passer.
 - `HookMatcher(matcher=NOM_OUTIL_REMBOURSER, ...)` : le hook ne s'applique qu'à cet outil.
 - Le prompt système **et** le hook : le premier guide, le second garantit.
 
 ## 5. Exercice guidé — `test_hook.py` (résultats observés)
 1. Identité non vérifiée, 200 € → `deny` ✔
 2. Identité vérifiée, 200 € → autorisé ✔
-3. Identité vérifiée, 1 500 € → `deny` + « conseiller humain » ✔
+3. Identité vérifiée, 1 500 € → `deny` + « conseiller » ✔
 4. Autre outil → non concerné ✔
 Le contrôle est **testable sans IA** : c'est aussi un argument d'architecture.
 
 ## 6. Exercice à toi
-- **E1.** Ajoute dans `test_hook.py` un cas : identité vérifiée, montant **exactement** 1 000 €. Résultat attendu selon le code ? Est-ce la règle métier souhaitée ?
+- **E1.** Ajoute dans `test_hook.py` un cas : identité vérifiée, montant **exactement** 800 €, puis 800,01 €. Résultat attendu selon le code ? Est-ce la règle métier souhaitée ?
 - **E2.** Écris (pseudo-code) un hook `PostToolUse` qui retire les numéros IBAN des résultats d'outils avant que le modèle ne les voie. Pourquoi est-ce utile (pense D5) ?
 - **E3.** Un collègue propose de supprimer le hook « puisque le prompt le dit déjà ». Réponds-lui en trois phrases.
 
 ## 7. Correction
 <details><summary>Voir la correction</summary>
 
-- **E1.** Le code teste `montant > 1000` → **1 000 € exactement passe**. Est-ce voulu ? Cela dépend de la règle métier (« au-delà de » ou « à partir de ») : à **faire préciser** et à couvrir par un test de limite.
+- **E1.** Le code teste `montant > seuil` → **800,00 € passe, 800,01 € est refusé** (le test existe déjà dans `tests/test_politique.py`). Est-ce voulu ? Cela dépend de la règle métier (« au-delà de » ou « à partir de ») : à **faire préciser** et à couvrir par un test de limite.
 - **E2.**
 ```python
 async def masquer_iban(input_data, tool_use_id, context):

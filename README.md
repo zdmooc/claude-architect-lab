@@ -6,7 +6,7 @@ Laboratoire francophone de préparation aux certifications **Claude Certified Ar
 
 | Parcours | Niveau | Point d'entrée | État |
 |---|---|---|---|
-| **Foundations (CCAR-F)** | agents, tools, MCP, Claude Code, prompting, fiabilité | [Parcours M0–M9](docs/parcours.md) | cours, quiz et labos rédigés sur cette branche ; validation partielle |
+| **Foundations (CCAR-F)** | agents, tools, MCP, Claude Code, prompting, fiabilité | [Parcours M0–M9](docs/parcours.md) | cours, quiz, corrigés et labos dans `main` ; tests hors API en CI, appels API non exécutés |
 | **Professional (CCAR-P)** | conception entreprise, intégration, sécurité, évaluation, gouvernance, exploitation | [Programme D1–D7](docs/professional/README.md) | sept cours + étude de cas + 21 questions originales ; architecture simulée |
 
 ## Entrées directes
