@@ -1,0 +1,6 @@
+INFRANUAGE SAS (fictif) — Facture n° IN-2026-0412
+Date : 15/10/2026
+Objet : hébergement de 4 machines virtuelles, octobre 2026
+Montant HT : 2 400,00 €
+TVA 20 % : 480,00 €
+Total TTC : 2 880,00 €
