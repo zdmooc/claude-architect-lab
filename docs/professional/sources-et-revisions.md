@@ -29,4 +29,5 @@ Les ressources de préparation signalent un **nouveau guide attendu le 17/11/202
 | Date | Source | Action |
 |---|---|---|
 | 2026-11-13 | Guide v1.0 et pages Academy consultées | Création du parcours D1–D7, cas AssurNova, exercices originaux |
+| 2026-11-13 | Guide v1.0 (PDF lié depuis partner-certifications) relu | Objectifs par domaine vérifiés ; leçons `lecons/P1`–`P7` ajoutées. Dates 17/11 et 07/12 **introuvables** sur les pages officielles. |
 | Après 2026-11-17 | Nouveau guide annoncé | **À faire**, non anticipé |
