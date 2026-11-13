@@ -24,7 +24,7 @@ Cet ordre suit la **priorité de révision par poids**, pas l'ordre des modules 
 ## Exercices et preuves
 
 - [Cas métier ConseilNova](cas-conseilnova.md) : qualifier une demande d'un client, sélectionner la solution, produire puis contrôler un livrable et faire un handover.
-- [14 questions originales avec corrigés](entrainement.md) : 2 questions par domaine, incluant plusieurs cas où l'erreur plausible est dangereuse.
+- [30 questions originales avec corrigés](entrainement.md) : réparties selon les pondérations officielles des domaines, incluant plusieurs cas où l'erreur plausible est dangereuse.
 - [Grille métier](grille-validation.md) : critères utilisables sans savoir coder, refus de livraison en l'absence de preuves.
 - Correspondances utiles : [Architect Foundations](../parcours.md) pour MCP/API ; [Developer Foundations](../developer/README.md) pour l'implémentation. Ces contenus techniques sont **facultatifs** en préparation Associate.
 

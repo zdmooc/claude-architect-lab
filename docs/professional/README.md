@@ -37,7 +37,7 @@ Chaque leçon suit le format du parcours Foundations : objectifs **officiels** d
 | D6 Stakeholders & Lifecycle | 14 % | [P6](lecons/P6-parties-prenantes-cycle-de-vie.md) |
 | D7 Developer Productivity & Enablement | 7 % | [P7](lecons/P7-productivite-exploitation.md) |
 
-Ordre conseillé : P1 → P2 → P3 → P4 → P5 → P6 → P7, puis le cas AssurNova et les 21 questions.
+Ordre conseillé : P1 → P2 → P3 → P4 → P5 → P6 → P7, puis le cas AssurNova et les 35 questions.
 
 ## Travaux pratiques livrables
 

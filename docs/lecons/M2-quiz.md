@@ -48,6 +48,20 @@ Réponds par la lettre et **une phrase de justification**. Une seule bonne répo
 - C. « Au-delà de 1 000 €, n'exécute rien : réponds que la demande est transmise à un conseiller »
 - D. « Réponds de façon professionnelle »
 
+### Questions supplémentaires (banque d'entraînement)
+
+**Q7.** Le champ `devise` d'une extraction reçoit tantôt « euros », tantôt « EUR », tantôt « € ». Quelle correction est la plus robuste ?
+A. Un `enum` dans le schéma (`EUR`, `USD`, …, `AUTRE`) avec un champ de précision pour les cas non prévus · B. Une consigne « sois cohérent » · C. Un post-traitement manuel hebdomadaire qui harmonise les valeurs de devise dans la base, après l'extraction · D. Supprimer le champ
+
+**Q8.** Où placer le rôle et les règles stables d'un assistant, et où placer la demande variable de l'utilisateur ?
+A. Tout dans le message `user`, à chaque fois · B. Tout dans le system prompt, y compris la demande de l'utilisateur, pour que le modèle lui donne la priorité maximale · C. Les règles dans un document joint · D. Le rôle et les règles stables dans le system prompt, la demande et les données variables dans le message `user`
+
+**Q9.** On veut que Claude raisonne avant de donner un verdict, mais seul le verdict doit être parsé par le programme. Comment structurer la sortie ?
+A. Interdire le raisonnement · B. Parser tout le texte avec une expression régulière · C. Séparer raisonnement et verdict (balises distinctes, ou champ `justification` avant `verdict` dans le schéma) et ne parser que le verdict · D. Demander le verdict en premier puis le raisonnement, pour que le programme trouve le verdict au début de la réponse
+
+**Q10.** Avant d'itérer sur un prompt de classification, que faut-il définir ?
+A. Le nombre de mots du prompt · B. La couleur de l'interface · C. Un jugement qualitatif d'un collègue expert, qui relira quelques sorties après chaque modification du prompt · D. Des critères mesurables sur un jeu étiqueté (exactitude par classe, taux d'« incertain »)
+
 ## Corrigé
 <details><summary>Voir les réponses</summary>
 
@@ -59,5 +73,9 @@ Réponds par la lettre et **une phrase de justification**. Une seule bonne répo
 | Q4 | **B** | Ordre non garanti : corréler par `custom_id`. |
 | Q5 | **C** | Information absente de la source : null + ambiguïté + humain. B serait une invention. |
 | Q6 | **C** | Seuil chiffré et action précise : vérifiable. Les autres sont vagues. |
+| Q7 | **A** | A : le schéma contraint les valeurs et prévoit une issue pour l'imprévu · B : consigne vague, cohérence non garantie · C : coûteux et non systématique · D : perd une information métier. À retenir : Valeurs attendues fermées : `enum`, avec une option « autre ». |
+| Q8 | **D** | A : répétition et risque d'oubli des règles · B : le system prompt change alors à chaque requête (et le cache ne sert plus) · C : les règles perdent leur statut d'instructions · D : séparation claire, cohérente avec le cache du préfixe stable. À retenir : System prompt = cadre stable ; message user = demande variable. |
+| Q9 | **C** | A : peut réduire la qualité sur une tâche qui demande de l'analyse · B : fragile, le verdict peut être mal extrait · C : le raisonnement est conservé et le parsing reste fiable · D : le verdict ne bénéficie plus du raisonnement qui le suit. À retenir : Raisonner avant de conclure, dans une structure séparable. |
+| Q10 | **D** | A : sans lien avec la qualité · B : sans rapport · C : trop peu de cas, pas de mesure · D : sans critère de succès défini à l'avance, on ne peut pas savoir si une itération améliore. À retenir : Définir les critères de succès avant d'optimiser un prompt. |
 
 </details>

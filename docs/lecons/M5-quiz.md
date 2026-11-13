@@ -27,6 +27,11 @@ A. Exécution directe · B. Plan mode · C. CI non interactive · D. Une command
 **Q6.** Pourquoi une instance indépendante pour la revue ?
 A. Elle coûte moins cher · B. Elle n'hérite pas du contexte et des angles morts de la session de génération · C. C'est obligatoire techniquement · D. Elle est plus rapide
 
+### Questions supplémentaires (banque d'entraînement)
+
+**Q7.** Claude Code ne doit jamais lire le fichier `.env` du projet. Quelle solution est la plus fiable ?
+A. Une phrase claire dans le CLAUDE.md du projet, versionné et partagé : « Ne jamais lire ni afficher le fichier .env » · B. Une règle de permission `deny` (par exemple `Read(./.env)`) dans les settings partagés du projet · C. Renommer le fichier · D. Le rappeler oralement à chaque session
+
 ## Corrigé
 <details><summary>Voir les réponses</summary>
 
@@ -38,5 +43,6 @@ A. Elle coûte moins cher · B. Elle n'hérite pas du contexte et des angles mor
 | Q4 | **A, C** | Non interactif + sortie JSON exploitable. D ne produit pas de modifications, ce n'est pas la question. |
 | Q5 | **B** | Changement large et flou : planifier, valider, puis exécuter. |
 | Q6 | **B** | Indépendance = pas d'angles morts hérités. |
+| Q7 | **B** | A : CLAUDE.md guide le comportement mais n'est pas un contrôle d'accès · B : la règle est appliquée par l'outil, pas laissée au jugement du modèle (exemple `Read(./.env)` vérifié dans la doc des settings Claude Code) · C : contournement fragile, d'autres fichiers sensibles resteront exposés · D : repose sur la mémoire humaine et le modèle. À retenir : Interdiction critique : une règle de permission, pas une consigne. |
 
 </details>

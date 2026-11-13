@@ -39,7 +39,7 @@
 
 ## D. Parcours Professional — domaine d'architecture d'entreprise
 
-Le Professional ne se limite pas à un aperçu : suivre désormais [le parcours complet D1–D7](professional/README.md), [son dossier HLD/ADR/contrôles](professional/cas-assurnova/README.md) et [ses 21 questions d'entraînement](professional/entrainement.md).
+Le Professional ne se limite pas à un aperçu : suivre désormais [le parcours complet D1–D7](professional/README.md), [son dossier HLD/ADR/contrôles](professional/cas-assurnova/README.md) et [ses 35 questions d'entraînement](professional/entrainement.md).
 
 Le guide Professional v1.0 (juillet 2026) est utilisé comme base et devra être **revalidé après la publication annoncée du nouveau guide du 17 novembre 2026** (examen révisé annoncé le 7 décembre 2026).
 
