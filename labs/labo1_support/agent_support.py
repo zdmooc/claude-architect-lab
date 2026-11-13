@@ -4,7 +4,10 @@ Vérifié contre `claude-agent-sdk` 0.2.181 (signatures de `tool`, `create_sdk_m
 `ClaudeAgentOptions`, `HookMatcher`, champs `permissionDecision`). Compilé.
 Le HOOK est testé hors API (test_hook.py). L'agent complet n'est PAS exécuté par le formateur.
 
-Idée clé : le prompt DEMANDE de vérifier l'identité ; le HOOK l'IMPOSE.
+Idée clé : le prompt DEMANDE de vérifier l'identité ; le HOOK l'IMPOSE ; l'OUTIL le RÉIMPOSE.
+Défense en profondeur : la règle est écrite UNE fois (`regle_remboursement`) et appliquée à deux
+endroits. Si le hook est retiré, mal configuré (mauvais `matcher`) ou si l'outil est appelé par un
+autre client (autre agent, serveur MCP réutilisé), l'outil refuse quand même.
 """
 import asyncio
 import json
@@ -13,7 +16,18 @@ from claude_agent_sdk import (ClaudeAgentOptions, HookMatcher, create_sdk_mcp_se
 
 # --- État de la session (fictif) -------------------------------------------
 ETAT = {"identite_verifiee": False}
-SEUIL_REMBOURSEMENT = 1000.0
+SEUIL_REMBOURSEMENT = 1000.0   # règle : AU-DELÀ de 1 000 € -> humain (1 000,00 € exactement passe)
+
+
+def regle_remboursement(identite_verifiee: bool, montant) -> str | None:
+    """Règle métier unique. Renvoie la RAISON du refus, ou None si l'opération est autorisée."""
+    if not identite_verifiee:
+        return "Identité non vérifiée : appelle d'abord verifier_identite."
+    if not isinstance(montant, (int, float)) or isinstance(montant, bool) or montant <= 0:
+        return "Montant invalide : un nombre strictement positif est attendu."
+    if montant > SEUIL_REMBOURSEMENT:
+        return f"Montant > {SEUIL_REMBOURSEMENT} € : transfert à un conseiller humain requis."
+    return None
 
 
 # --- Outils métier exposés via un serveur MCP « in-process » ----------------
@@ -28,6 +42,11 @@ async def verifier_identite(args):
 @tool("rembourser", "Rembourse un montant en euros sur le contrat du client vérifié.",
       {"contrat": str, "montant": float})
 async def rembourser(args):
+    # Contrôle RÉAPPLIQUÉ dans l'outil : ne dépend ni du prompt ni de la présence du hook.
+    refus = regle_remboursement(ETAT["identite_verifiee"], args.get("montant"))
+    if refus:
+        return {"content": [{"type": "text", "text": json.dumps(
+            {"categorie": "regle_metier", "message": refus, "reessayable": False})}], "is_error": True}
     return {"content": [{"type": "text", "text": f"Remboursement de {args['montant']} € effectué (fictif)."}]}
 
 
@@ -39,16 +58,12 @@ NOM_OUTIL_REMBOURSER = "mcp__support__rembourser"   # convention mcp__<serveur>_
 async def controle_remboursement(input_data, tool_use_id, context):
     if input_data.get("tool_name") != NOM_OUTIL_REMBOURSER:
         return {}
-    if not ETAT["identite_verifiee"]:
+    refus = regle_remboursement(ETAT["identite_verifiee"], input_data.get("tool_input", {}).get("montant"))
+    if refus:
         return {"hookSpecificOutput": {
             "hookEventName": "PreToolUse",
             "permissionDecision": "deny",
-            "permissionDecisionReason": "Identité non vérifiée : appelle d'abord verifier_identite."}}
-    if input_data.get("tool_input", {}).get("montant", 0) > SEUIL_REMBOURSEMENT:
-        return {"hookSpecificOutput": {
-            "hookEventName": "PreToolUse",
-            "permissionDecision": "deny",
-            "permissionDecisionReason": f"Montant > {SEUIL_REMBOURSEMENT} € : transfert à un conseiller humain requis."}}
+            "permissionDecisionReason": refus}}
     return {}
 
 

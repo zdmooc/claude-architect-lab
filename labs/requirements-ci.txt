@@ -1,0 +1,7 @@
+# Dépendances des tests HORS API (aucune clé, aucun appel facturé).
+# Versions vérifiées par le formateur le 2026-11-13.
+anthropic==2.8.0
+claude-agent-sdk==0.2.181
+mcp==2.3.0
+pydantic==2.14.3
+pytest==9.2.0
