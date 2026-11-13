@@ -1,0 +1,3 @@
+# Dépendances des tests OFFLINE (aucune clé Claude requise).
+pytest>=8,<10
+pydantic>=2,<3
