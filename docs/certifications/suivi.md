@@ -18,6 +18,7 @@
 | Preuve | CCAO-F | CCDV-F | CCAR-F | CCAR-P |
 |---|---|---|---|---|
 | Cours/domaines rédigés | oui | oui | oui | oui |
+| Leçons complètes (objectifs officiels, exercices, corrigés, QCM, résumé) | A1–A7 | V1–V8 | M0–M9 | P1–P7 |
 | Cas de décision rédigé | ConseilNova | DevBank | cas du dépôt | AssurNova |
 | Questions originales corrigées | 14 | 16 | quiz/scénarios | 21 |
 | Logiciel hors API exécutable | non requis | **oui, à vérifier CI** | **oui, CI existante** | surtout conceptuel |
